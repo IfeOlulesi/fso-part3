@@ -1,0 +1,19 @@
+GET http://localhost:3001/
+
+### Get all Notes
+GET http://localhost:3001/api/notes
+
+### Get note by Id
+GET http://localhost:3001/api/notes/2
+
+### Create a Note
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "Who am I not to be brilliant"
+  
+}
+
+### Delete a Note
+DELETE http://localhost:3001/api/notes/2
