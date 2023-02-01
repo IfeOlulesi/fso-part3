@@ -1,4 +1,13 @@
+### Display general info
+GET http://localhost:3001/info
+
+### Get All Contacts
 GET http://localhost:3001/api/persons
 
-###
-GET http://localhost:3001/info
+
+### Get Contact By Id
+GET http://localhost:3001/api/persons/2
+
+
+### Delete Contact By Id
+DELETE  http://localhost:3001/api/persons/2

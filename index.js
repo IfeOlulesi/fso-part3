@@ -24,7 +24,9 @@ app.get('/api/persons', (req, res) => personsApi.getAllContacts(req, res))
 
 app.get('/info', (req, res) => personsApi.contactInfo(req, res))
 
+app.get('/api/persons/:id', (req, res) => personsApi.getContactById(req, res))
 
+app.delete('/api/persons/:id', (req, res) => personsApi.deleteContact(req, res))
 
 const PORT = 3001
 

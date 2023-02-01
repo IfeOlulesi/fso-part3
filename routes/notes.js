@@ -25,7 +25,6 @@ const getAllNotes = (request, response) => {
 }
 
 const getNoteById = (request, response) => {
-  console.log(request.headers)
   const id = Number(request.params.id);
   const note = notes.find(note => note.id === id)
   if (note) {

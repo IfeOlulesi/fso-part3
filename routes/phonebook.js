@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-const persons = [
+let persons = [
   { 
     "id": 1,
     "name": "Arto Hellas", 
@@ -42,8 +42,33 @@ const getAllContacts = (req, res) => {
   res.json(persons)
 }
 
+const getContactById = (req, res) => {
+  const contact = persons.find(person => person.id === Number(req.params.id))
+  if (contact === undefined) {
+    res.statusMessage = "Contact not found"
+    return res.status(404).end()
+  }
+  
+  return res.json(contact)
+}
+
+const deleteContact = (req, res) => {
+  const targetContactId = Number(req.params.id)
+  const contact = persons.find(person => person.id === targetContactId)
+  
+  if (contact) {
+    persons = persons.filter(contact => contact.id !== targetContactId)   
+    return res.status(200).end()
+  } else {
+    res.statusMessage = "Contact not found"
+    return res.status(404).end()
+  }
+}
+
 module.exports = {
   phonebookHome: phonebookHome,
   contactInfo: contactInfo,
   getAllContacts: getAllContacts,
+  getContactById: getContactById,
+  deleteContact: deleteContact,
 }
