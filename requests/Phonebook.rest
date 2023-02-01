@@ -11,3 +11,13 @@ GET http://localhost:3001/api/persons/2
 
 ### Delete Contact By Id
 DELETE  http://localhost:3001/api/persons/2
+
+
+### Create new contact
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Bob Ross",
+  "number": "09034735232"
+}

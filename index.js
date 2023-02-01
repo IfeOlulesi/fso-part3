@@ -28,6 +28,8 @@ app.get('/api/persons/:id', (req, res) => personsApi.getContactById(req, res))
 
 app.delete('/api/persons/:id', (req, res) => personsApi.deleteContact(req, res))
 
+app.post('/api/persons', (req, res) => personsApi.addContact(req, res))
+
 const PORT = 3001
 
 app.listen(PORT, () => {
