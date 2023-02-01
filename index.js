@@ -22,6 +22,7 @@ app.post('/api/notes', (req, res) => notesApi.createNewNote(req, res))
 // phonebook app routes
 app.get('/api/persons', (req, res) => personsApi.getAllContacts(req, res))
 
+app.get('/info', (req, res) => personsApi.contactInfo(req, res))
 
 
 
