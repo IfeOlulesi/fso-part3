@@ -66,16 +66,20 @@ const deleteContact = (req, res) => {
 }
 
 const addContact = (req, res) => {
-  const contactInfo = req.body // name, number
-  console.log(contactInfo)
+  const contactInfo = req.body
   const ciKeys = Object.keys(contactInfo).sort()
-  console.log(ciKeys)
 
   if (
-    ciKeys.length > 1 && 
-    ciKeys[0].toLowerCase() === "name" &&
-    ciKeys[1].toLowerCase() === "number"
+    ciKeys.length > 1 &&
+    ciKeys[0].toLowerCase() === "name" && ciKeys[1].toLowerCase() === "number"
   ) {
+
+    const nameExists = persons.find(contact => contact.name === contactInfo.name)
+
+    if (nameExists) {
+      res.json({ error: "Name already exists" })
+      return res.status(400).end()
+    } else {
       const note = {
         id: Math.floor(Math.random(1, 100) * 100),
         name: contactInfo.name,
@@ -85,7 +89,11 @@ const addContact = (req, res) => {
       persons.push(note)
       return res.status(200).end()
     }
-  return res.status(400).end()
+  } else {
+    res.json({error: "Must include name and number fields"})
+    res.statusMessage = "Invalid request"
+    return res.status(400).end()
+  }
 }
 
 module.exports = {
