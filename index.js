@@ -1,16 +1,9 @@
 const express = require('express')
 const app = express()
+var morgan = require('morgan')
 
 const notesApi = require('./routes/notes')
 const personsApi = require('./routes/phonebook')
-
-const requestLogger = (req, res, next) => {
-  console.log("Method", req.method)
-  console.log("Path", req.path)
-  console.log("Body", req.body)
-  console.log('---')
-  next()
-}
 
 
 const unknownEndpoint = (request, response) => {
@@ -19,7 +12,7 @@ const unknownEndpoint = (request, response) => {
 
 
 app.use(express.json())
-app.use(requestLogger)
+app.use(morgan('tiny'))
 
 
 // notes app routes
